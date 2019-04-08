@@ -1,0 +1,25 @@
+{
+    "name": "jkl",
+    "displayName": "jkl",
+    "description": "jkl support test",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.33.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "grammars": [
+            {
+                "path": "./syntaxes/injection.json",
+                "scopeName": "jkl.injection",
+                "injectTo": ["source.js.jsx"],
+                "embeddedLanguages": {
+                    "meta.embedded.inline.html": "html",
+                    "meta.embedded.inline.css": "postcss"
+                }
+            }
+        ]
+    }
+}

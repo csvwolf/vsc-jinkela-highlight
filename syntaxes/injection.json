@@ -1,0 +1,89 @@
+{
+  "scopeName": "jkl.injection",
+  "injectionSelector": "L:meta.class.body.js",
+  "patterns": [
+    {
+      "include": "#template-html"
+		},
+		{
+			"include": "#template-css"
+		}
+  ],
+  "repository": {
+    "template-html": {
+			"name": "keywords.template.jkl",
+			"begin": "\\s*(get)\\s+(template)\\(\\)\\s*\\{\\s*",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.type.accessor.js.jkl"
+				},
+				"2": {
+					"name": "entity.name.function.js.jkl"
+				}
+			},
+			"end": "\\s*\\}",
+			"patterns": [{
+				"name": "keyword.ctl.js.jkl",
+				"match": "\\s*return\\s*"
+			}, {
+				"contentName": "meta.embedded.inline.html",
+				"begin": "\\s*(`)\\s*",
+				"beginCaptures": {
+					"1": {
+						"name": "punctuation.definition.quasi.begin.js.jkl"
+					}
+				},
+				"end": "\\s*(`)\\s*",
+				"endCaptures": {
+					"1": {
+						"name": "punctuation.definition.quasi.end.js.jkl"
+					}
+				},
+				"patterns": [
+					{
+						"include": "source.ts#template-substitution-element"
+					},
+					{
+						"include": "text.html.basic"
+					}
+				]
+			}]
+		},
+    "template-css": {
+			"name": "keywords.template.jkl",
+			"begin": "\\s*(get)\\s+(styleSheet)\\(\\)\\s*\\{\\s*",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.type.accessor.js.jkl"
+				},
+				"2": {
+					"name": "entity.name.function.js.jkl"
+				}
+			},
+			"end": "\\s*\\}",
+			"patterns": [{
+				"name": "keyword.ctl.js.jkl",
+				"match": "\\s*return\\s*"
+			}, {
+				"contentName": "meta.embedded.inline.css",
+				"begin": "\\s*(`)\\s*",
+				"beginCaptures": {
+					"1": {
+						"name": "punctuation.definition.quasi.begin.js.jkl"
+					}
+				},
+				"end": "\\s*(`)\\s*",
+				"endCaptures": {
+					"1": {
+						"name": "punctuation.definition.quasi.end.js.jkl"
+					}
+				},
+				"patterns": [
+					{
+						"include": "source.css"
+					}
+				]
+			}]
+    }
+  }
+}
